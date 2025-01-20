@@ -10,7 +10,7 @@ const SignIn = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const from = location?.state || '/'
-  console.log(from)
+  // console.log(from)
 
   // Google Signin
   const handleGoogleSignIn = async () => {
@@ -31,7 +31,7 @@ const SignIn = () => {
     const form = e.target
     const email = form.email.value
     const pass = form.password.value
-    console.log({ email, pass })
+    // console.log({ email, pass })
     try {
       //User Login
       await signIn(email, pass)

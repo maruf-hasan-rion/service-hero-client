@@ -36,23 +36,25 @@ const Navbar = () => {
               <li>
                 <NavLink to="/services">Services</NavLink>
               </li>
-              <li className="dropdown">
-              <NavLink to="/dashboard">Dashboard</NavLink>
-              <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                <li>
-                  <Link to="/dashboard/addService">Add Service</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/manageService">Manage Service</Link>
-                </li>
-                 <li>
-                  <Link to="/dashboard/bookedServices">Booked Services</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/serviceToDo">Service To Do</Link>
-                </li>
-              </ul>
-            </li>
+              <li>
+                <details className="dropdown">
+                  <summary className="">Dashboard</summary>
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                    <li>
+                      <Link to="/addService">Add Service</Link>
+                    </li>
+                    <li>
+                      <Link to="/manageService">Manage Service</Link>
+                    </li>
+                    <li>
+                      <Link to="/bookedServices">Booked Services</Link>
+                    </li>
+                    <li>
+                      <Link to="/serviceToDo">Service To Do</Link>
+                    </li>
+                  </ul>
+                </details>
+              </li>
             </ul>
           </div>
           <Link to="/" className="p-2 font-semibold text-xl">
@@ -68,26 +70,28 @@ const Navbar = () => {
               <NavLink to="/services">Services</NavLink>
             </li>
             {user && user?.email ? (
-             <li className="dropdown">
-              <NavLink to="/dashboard">Dashboard</NavLink>
-              <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                <li>
-                  <Link to="/dashboard/addService">Add Service</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/manageService">Manage Service</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/bookedServices">Booked Services</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/serviceToDo">Service To Do</Link>
-                </li>
-              </ul>
-            </li>
-          ) : (
-            <li></li>
-          )}
+              <li>
+                <details className="dropdown">
+                  <summary className="">Dashboard</summary>
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                    <li>
+                      <Link to="/addService">Add Service</Link>
+                    </li>
+                    <li>
+                      <Link to="/manageService">Manage Service</Link>
+                    </li>
+                    <li>
+                      <Link to="/bookedServices">Booked Services</Link>
+                    </li>
+                    <li>
+                      <Link to="/serviceToDo">Service To Do</Link>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            ) : (
+              <li></li>
+            )}
             {/* <li className="dropdown">
               <NavLink to="/dashboard">Dashboard</NavLink>
               <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
