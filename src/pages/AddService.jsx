@@ -11,7 +11,6 @@ const AddService = () => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
-    const email = form.email.value;
     const image = form.image.value;
     const area = form.area.value;
     const price = parseFloat(form.price.value);
@@ -19,8 +18,8 @@ const AddService = () => {
 
     const formData = {
       title,
-      buyer: {
-        email,
+      serviceProvider: {
+        email: user?.email,
         name: user?.displayName,
         photo: user?.photoURL,
       },

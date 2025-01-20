@@ -29,8 +29,9 @@ const Home = () => {
           ))}
         </div>
         <div className="mx-auto my-10 w-1/5">
-        <Link to="/services"><button className="btn btn-primary w-40">Show All</button></Link>
-        
+          <Link to="/services">
+            <button className="btn btn-primary w-40">Show All</button>
+          </Link>
         </div>
       </div>
     </div>
