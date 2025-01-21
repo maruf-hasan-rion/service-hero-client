@@ -1,7 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import AuthContext from "../contexts/AuthContext";
@@ -19,7 +16,7 @@ const UpdateService = () => {
 
   const fetchServiceData = async () => {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/services/${id}`
+      `${import.meta.env.VITE_API_URL}/service/${id}`
     );
     setService(data);
   };
@@ -27,17 +24,15 @@ const UpdateService = () => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
-    const email = form.email.value;
     const image = form.image.value;
-    // const deadline = startDate;
     const area = form.area.value;
     const price = parseFloat(form.price.value);
     const description = form.description.value;
 
     const formData = {
       title,
-      buyer: {
-        email,
+      serviceProvider: {
+        email: user?.email,
         name: user?.displayName,
         photo: user?.photoURL,
       },
@@ -45,9 +40,8 @@ const UpdateService = () => {
       area,
       price,
       description,
-      bid_count: 0,
     };
-    // console.log("dta",formData);
+    // console.log("data",formData);
 
     try {
       const { data } = await axios.put(
@@ -55,13 +49,28 @@ const UpdateService = () => {
         formData
       );
       console.log(data);
-      toast.success("Job Data Updated Successfully!");
-      navigate("/my-posted-jobs");
+      toast.success("Service Data Updated Successfully!");
+      navigate("/manageService");
     } catch (err) {
       console.log(err);
       toast.error(err.message);
     }
   };
+  // const handleUpdate = async (id) => {
+  //   try {
+  //     const { data } = await axios.delete(
+  //       `${import.meta.env.VITE_API_URL}/service/${id}`
+  //     );
+  //     console.log(data);
+  //     toast.success("Delete Successful");
+
+  //     //refresh ui
+  //     fetchAllServices();
+  //   } catch (err) {
+  //     console.log(err.message);
+  //     toast.error(err.message);
+  //   }
+  // };
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
@@ -79,6 +88,7 @@ const UpdateService = () => {
               <input
                 id="title"
                 name="title"
+                defaultValue={service.title}
                 type="text"
                 required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -92,21 +102,29 @@ const UpdateService = () => {
               <input
                 id="image"
                 name="image"
+                defaultValue={service.image}
                 type="text"
                 required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
               />
             </div>
-            <div className="flex flex-col gap-2 ">
-              <label className="text-gray-700 " htmlFor="area">
-                Service Area
-              </label>
-              <select name="area" id="area" className="border p-2 rounded-md">
-                <option value="Gulshan">Gulshan</option>
-                <option value="Banani">Banani</option>
-                <option value="Uttara">Uttara</option>
-              </select>
-            </div>
+            {service.area && (
+              <div className="flex flex-col gap-2 ">
+                <label className="text-gray-700 " htmlFor="area">
+                  Service Area
+                </label>
+                <select
+                  name="area"
+                  defaultValue={service.area}
+                  id="area"
+                  className="border p-2 rounded-md"
+                >
+                  <option value="Gulshan">Gulshan</option>
+                  <option value="Banani">Banani</option>
+                  <option value="Uttara">Uttara</option>
+                </select>
+              </div>
+            )}
             <div>
               <label className="text-gray-700 " htmlFor="price">
                 Price
@@ -114,6 +132,7 @@ const UpdateService = () => {
               <input
                 id="price"
                 name="price"
+                defaultValue={service.price}
                 type="number"
                 required
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -127,13 +146,14 @@ const UpdateService = () => {
             <textarea
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
               name="description"
+              defaultValue={service.description}
               id="description"
               required
             ></textarea>
           </div>
           <div className="flex justify-end mt-6">
             <button className="disabled:cursor-not-allowed px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-              Add Service
+              Update Service
             </button>
           </div>
         </form>

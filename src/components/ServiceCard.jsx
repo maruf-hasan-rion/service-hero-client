@@ -31,7 +31,7 @@ const ServiceCard = ({ service }) => {
               </div>
             </div>
           </div>
-          <Link to={`/details/${_id}`}>
+          <Link to={`/serviceDetails/${_id}`}>
             <button className="btn btn-primary">View Details</button>
           </Link>
         </div>
