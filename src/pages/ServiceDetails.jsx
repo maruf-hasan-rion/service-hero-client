@@ -17,12 +17,12 @@ const ServiceDetails = () => {
     setServices(data);
   };
   //   console.log(services);
-  const { title, description, image, price, _id, serviceProvider } =
+  const { title, description, image, price, _id, area, serviceProvider } =
     services || {};
   return (
     <section className="container px-4 mx-auto pt-12">
       <div className="flex items-center gap-x-3">
-        <h2 className="text-lg font-medium text-gray-800 ">Service Details</h2>
+        {/* <h2 className="text-lg font-medium text-gray-800 ">Service Details</h2> */}
       </div>
       <div className="flex justify-center">
         <div className="card bg-base-100 w-3/5 shadow-xl">
@@ -43,10 +43,16 @@ const ServiceDetails = () => {
                   {serviceProvider?.name}
                 </p>
               </div>
-              <div>
-                <p className="font-semibold">Price:</p>
-                <div className="badge badge-outline badge-secondary">
-                  {price} $
+              <div className="flex flex-col gap-2">
+                <div className="flex gap-2 justify-center items-center">
+                  <p className="font-semibold">Area: </p>
+                  <div className="badge badge-secondary">{area}</div>
+                </div>
+                <div className="flex gap-2 justify-center items-center">
+                  <p className="font-semibold">Price: </p>
+                  <div className="badge badge-outline badge-secondary">
+                    {price} $
+                  </div>
                 </div>
               </div>
             </div>

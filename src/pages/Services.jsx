@@ -16,7 +16,7 @@ const Services = () => {
   };
   return (
     <div>
-      <div className="w-11/12 mx-auto pt-5 grid md:grid-cols-3 gap-3">
+      <div className="w-4/12 mx-auto pt-5 grid md:grid-cols-1">
         {services.map((service) => (
           <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}

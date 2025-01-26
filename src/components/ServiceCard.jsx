@@ -8,7 +8,7 @@ const ServiceCard = ({ service }) => {
   // console.log("service", service);
   return (
     <div>
-      <div className="card bg-base-100 w-96 shadow-xl">
+      <div className="card bg-base-100 w-full shadow-xl">
         <figure className="h-64">
           <img src={image} alt="img1" />
         </figure>
@@ -17,7 +17,7 @@ const ServiceCard = ({ service }) => {
             {title}
             <div className="badge badge-secondary">10% OFF!</div>
           </h2>
-          <p>{description.substring(0, 70)}...</p>
+          <p>{description.substring(0, 50)}...</p>
           <p className="font-semibold">Service By:</p>
           <div className="card-actions justify-between items-center">
             <div className="flex justify-center items-center">
@@ -31,7 +31,7 @@ const ServiceCard = ({ service }) => {
               </div>
             </div>
           </div>
-          <Link to={`/serviceDetails/${_id}`}>
+          <Link to={`/services/${_id}`}>
             <button className="btn btn-primary">View Details</button>
           </Link>
         </div>

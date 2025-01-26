@@ -66,19 +66,19 @@ const ManageService = () => {
                 <p className="h-12">
                   {services.description.substring(0, 70)}...
                 </p>
-                <p className="font-semibold">Service By:</p>
+                {/* <p className="font-semibold">Service By:</p>
                 <div className="card-actions justify-between items-center">
                   <div className="flex justify-center items-center">
                     <img className="w-12" src={user.photo} alt="" />
                     <p className="badge badge-accent p-4">{user.name}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold">Price:</p>
-                    <div className="badge badge-outline badge-secondary">
-                      {services.price} $
-                    </div>
+                  </div> */}
+                <div>
+                  <p className="font-semibold">Price:</p>
+                  <div className="badge badge-outline badge-secondary">
+                    {services.price} $
                   </div>
                 </div>
+                {/* </div> */}
                 <div className="flex justify-evenly items-center py-2">
                   <Link to={`/updateService/${services._id}`}>
                     <button className="btn btn-primary px-10">Update</button>
