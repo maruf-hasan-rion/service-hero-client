@@ -24,7 +24,7 @@ const BookedServices = () => {
     <section className="container px-4 mx-auto pt-12">
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">
-          My Posted Services
+          My Booked Services
         </h2>
 
         <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
@@ -50,13 +50,21 @@ const BookedServices = () => {
                   <p className="font-semibold">Service By:</p>
                   <div className="card-actions justify-between items-center">
                     <div className="flex justify-center items-center">
-                      <img className="w-12" src={user.photo} alt="" />
-                      <p className="badge badge-accent p-4">{user.name}</p>
+                      <img className="w-12" src={user?.photoURL} alt="" />
+                      <p className="badge badge-accent p-4">
+                        {user?.displayName}
+                      </p>
                     </div>
                     <div>
                       <p className="font-semibold">Price:</p>
                       <div className="badge badge-outline badge-secondary">
                         {services.price} $
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-semibold">Status:</p>
+                      <div className="badge badge-outline badge-accent">
+                        {services.serviceStatus}
                       </div>
                     </div>
                   </div>
