@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaCircleUser } from "react-icons/fa6";
+// import { FaCircleUser } from "react-icons/fa6";
 import AuthContext from "../contexts/AuthContext";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -57,7 +58,12 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className="p-2 font-semibold text-xl">
+          <Link to="/" className="p-2 font-semibold text-xl md:text-2xl">
+            <img
+              className="w-[40px] md:w-[52px] inline-block p-2 mr-2 rounded-full bg-slate-200"
+              src="../../public/favicon.svg"
+              alt=""
+            />
             Service Hero
           </Link>
         </div>
@@ -112,20 +118,23 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div className=" ">
+          <div className="">
             {user && user?.email ? (
-              <div className="flex px-2 items-center gap-2">
+              <div className="flex px-2 items-center gap-1">
                 <img
-                  className="w-16 rounded-full"
+                  className="w-12 rounded-full"
                   src={user?.photoURL}
                   alt=""
                 />
-                <p>{user.displayName}</p>
+                <p className="font-semibold bg-slate-200 p-2 rounded-3xl">
+                  {user.displayName}
+                </p>
               </div>
             ) : (
-              <div className="text-3xl px-8">
-                <FaCircleUser></FaCircleUser>
-              </div>
+              <div></div>
+              // <div className="text-3xl px-8">
+              //   <FaCircleUser></FaCircleUser>
+              // </div>
             )}
           </div>
           {user && user?.email ? (

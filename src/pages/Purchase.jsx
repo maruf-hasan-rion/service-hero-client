@@ -35,11 +35,13 @@ const Purchase = () => {
     const image = form.image.value;
     const instruction = form.instruction.value;
     const price = parseFloat(form.price.value);
-    // const description = form.description.value;
     const provider = form.provider.value;
     const providerEmail = form.providerEmail.value;
     const serviceDate = startDate;
     const serviceStatus = "pending";
+
+    if (user?.email === providerEmail)
+      return toast.error("Action not permitted!");
 
     const formData = {
       id,
@@ -57,20 +59,6 @@ const Purchase = () => {
       serviceStatus,
     };
     console.log("data", formData);
-
-    // try {
-    //   const { data } = await axios.post(
-    //     `${import.meta.env.VITE_API_URL}/add-booking`,
-    //     formData
-    //   );
-    //   form.reset();
-    //   toast.success("Booking Successful!!!");
-    //   console.log(data);
-    //   navigate("/bookedServices");
-    // } catch (err) {
-    //   console.log(err);
-    //   toast.error(err?.response?.data);
-    // }
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/add-booking`, formData);
       form.reset();
@@ -78,7 +66,8 @@ const Purchase = () => {
       navigate("/bookedServices");
     } catch (err) {
       console.log(err);
-      toast.error(err.message);
+      //   toast.error(err.message);
+      toast.error(err?.response?.data);
     }
   };
 

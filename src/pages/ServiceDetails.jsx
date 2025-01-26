@@ -16,7 +16,7 @@ const ServiceDetails = () => {
     );
     setServices(data);
   };
-  console.log(services);
+  //   console.log(services);
   const { title, description, image, price, _id, serviceProvider } =
     services || {};
   return (
