@@ -127,7 +127,7 @@ const Navbar = () => {
                   alt=""
                 />
                 <p className="font-semibold bg-slate-200 p-2 rounded-3xl">
-                  {user.displayName}
+                  {user?.displayName}
                 </p>
               </div>
             ) : (

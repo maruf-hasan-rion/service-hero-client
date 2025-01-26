@@ -3,6 +3,7 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import AuthContext from "../contexts/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const AddService = () => {
   // const navigate = useNavigate();
@@ -44,6 +45,9 @@ const AddService = () => {
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
+      <Helmet>
+        <title>Add Service</title>
+      </Helmet>
       <section className=" p-2 md:p-6 mx-auto bg-white rounded-md shadow-lg ">
         <h2 className="text-lg font-semibold text-gray-700 ">Add a Services</h2>
 

@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 // import useAuth from '../hooks/useAuth'
 import AuthContext from "../contexts/AuthContext";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const ManageService = () => {
   //   const axiosSecure = useAxiosSecure()
@@ -96,6 +97,9 @@ const ManageService = () => {
   //  };
   return (
     <section className="container px-4 mx-auto pt-12">
+      <Helmet>
+        <title>Manage Services</title>
+      </Helmet>
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">
           My Posted Services

@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../contexts/AuthContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const BookedServices = () => {
   const { user } = useContext(AuthContext);
   const [booked, setBooked] = useState([]);
-  //   const { title, price, image } = booked || {};
 
   useEffect(() => {
     fetchAllServices();
@@ -22,6 +22,9 @@ const BookedServices = () => {
   console.log(booked);
   return (
     <section className="container px-4 mx-auto pt-12">
+      <Helmet>
+        <title>Booked Services</title>
+      </Helmet>
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">
           My Booked Services
@@ -49,10 +52,19 @@ const BookedServices = () => {
                 </p> */}
                   <p className="font-semibold">Service By:</p>
                   <div className="card-actions justify-between items-center">
-                    <div className="flex justify-center items-center">
-                      <img className="w-12" src={user?.photoURL} alt="" />
+                    <div className="flex flex-col justify-center  gap-3">
+                      {/* <img
+                        className="w-12"
+                        src={services.providerEmail}
+                        alt=""
+                      /> */}
                       <p className="badge badge-accent p-4">
-                        {user?.displayName}
+                        <span className="mr-2"> Email: </span>
+                        {services.providerEmail}
+                      </p>
+                      <p className="badge badge-accent p-4">
+                        <span className="mr-2"> Name: </span>
+                        {services.provider}
                       </p>
                     </div>
                     <div>
@@ -75,7 +87,7 @@ const BookedServices = () => {
         </div>
       )}
       {booked.length == 0 && (
-        <div className=" flex flex-col justify-center items-center gap-32">
+        <div className=" flex flex-col justify-center items-center gap-32 h-[500px]">
           <h2 className="text-5xl font-semibold text-blue-600 ">
             No booked service
           </h2>
