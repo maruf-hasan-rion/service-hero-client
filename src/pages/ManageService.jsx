@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 // import useAxiosSecure from '../hooks/useAxiosSecure'
 // import useAuth from '../hooks/useAuth'
 import AuthContext from "../contexts/AuthContext";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const ManageService = () => {
   //   const axiosSecure = useAxiosSecure()
@@ -24,34 +25,11 @@ const ManageService = () => {
     );
     setServices(data);
   };
-  console.log(services);
+  // console.log(services);
 
-  const handleDelete = async (id) => {
-    try {
-      const { data } = await axios.delete(
-        `${import.meta.env.VITE_API_URL}/service/${id}`
-      );
-      console.log(data);
-      toast.success("Delete Successful");
-
-      //refresh ui
-      fetchAllServices();
-    } catch (err) {
-      console.log(err.message);
-      toast.error(err.message);
-    }
-  };
   // const handleDelete = async (id) => {
   //   try {
-  // Swal.fire({
-  //      title: "Are you sure?",
-  //      text: "You won't be able to revert this!",
-  //      icon: "warning",
-  //      showCancelButton: true,
-  //      confirmButtonColor: "#3085d6",
-  //      cancelButtonColor: "#d33",
-  //      confirmButtonText: "Yes, delete it!",
-  //    })
+
   //     const { data } = await axios.delete(
   //       `${import.meta.env.VITE_API_URL}/service/${id}`
   //     );
@@ -65,36 +43,44 @@ const ManageService = () => {
   //     toast.error(err.message);
   //   }
   // };
-  //  const handleDelete = (id) => {
-  //    console.log(id);
-  //    Swal.fire({
-  //      title: "Are you sure?",
-  //      text: "You won't be able to revert this!",
-  //      icon: "warning",
-  //      showCancelButton: true,
-  //      confirmButtonColor: "#3085d6",
-  //      cancelButtonColor: "#d33",
-  //      confirmButtonText: "Yes, delete it!",
-  //    }).then((result) => {
-  //      if (result.isConfirmed) {
-  //        fetch(`https://movie-portal-server-beta.vercel.app/movies/${id}`, {
-  //          method: "DELETE",
-  //        })
-  //          .then((res) => res.json())
-  //          .then((result) => {
-  //            console.log(result);
-  //            if (result.deletedCount > 0) {
-  //              Swal.fire({
-  //                title: "Deleted!",
-  //                text: "Your Movie has been deleted.",
-  //                icon: "success",
-  //              });
-  //            }
-  //            navigate("/");
-  //          });
-  //      }
-  //    });
-  //  };
+  const handleDelete = (id) => {
+    console.log(id);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`${import.meta.env.VITE_API_URL}/service/${id}`)
+          .then((response) => {
+            console.log(response.data);
+            if (response.data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Movie has been deleted.",
+                icon: "success",
+              });
+            }
+            fetchAllServices();
+            // Navigate("/");
+          })
+          .catch((error) => {
+            console.error("Error deleting the movie:", error);
+            Swal.fire({
+              title: "Error!",
+              text: "There was an issue deleting the movie.",
+              icon: "error",
+            });
+          });
+      }
+    });
+  };
   return (
     <section className="container px-4 mx-auto pt-12">
       <Helmet>
