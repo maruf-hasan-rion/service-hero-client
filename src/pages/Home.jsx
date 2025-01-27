@@ -5,6 +5,9 @@ import ServiceCard from "../components/ServiceCard";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import hosting from "../assets/hosting.jpg";
+import cloud from "../assets/cloud.jpg";
+import software from "../assets/register.jpg";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -37,14 +40,14 @@ const Home = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 2000,
+      duration: 3000,
       easing: "ease-in-out",
-      once: true,
+      once: false,
     });
   }, []);
   return (
     <div>
-      <div className="p-4 mr-8 flex justify-end items-center">
+      <div className="p-4 mr-8 flex justify-end items-center mb-10">
         <label className="flex cursor-pointer gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -99,26 +102,35 @@ const Home = () => {
       </div>
       <div className="my-16">
         <h1 data-aos="fade-up" className="text-center my-6 font-bold text-3xl">
-          Welcome to a New Era of Movie!
+          Welcome to a New Era of Service!
         </h1>
         <div className="flex flex-col md:flex-row  items-center justify-center gap-5 mt-12">
           <div
             data-aos="zoom-in"
-            className="w-72 h-72 flex items-center justify-center text-white bg-[url('https://img.freepik.com/free-photo/senior-police-agent-with-gun_155003-4445.jpg?t=st=1737007353~exp=1737010953~hmac=ce6d8af796dc4d17ec2dc2fbf4bbb0d533d51f4c7244471fcb833b50189faaa7&w=740')] bg-cover"
+            style={{
+              backgroundImage: `url(${hosting})`,
+            }}
+            className="w-72 h-72 flex items-center justify-center bg-cover text-3xl font-bold"
           >
-            Horror
+            Hosting
           </div>
           <div
             data-aos="zoom-in-up"
-            className="w-72 h-72 flex items-center justify-center text-white bg-[url('https://img.freepik.com/free-photo/flying-men-outdoors-cyberpunk-portrait_23-2150006863.jpg?t=st=1737007486~exp=1737011086~hmac=21b788c19b5cad70f852ebd45478027c94cd26e1f1a0aa692dafd2c916c76630&w=900')] bg-cover"
+            style={{
+              backgroundImage: `url(${cloud})`,
+            }}
+            className="w-72 h-72 flex items-center justify-center bg-cover text-3xl font-bold"
           >
-            Action
+            Cloud
           </div>
           <div
             data-aos="zoom-in-down"
-            className="w-72 h-72 bg-orange-400 flex items-center justify-center  text-white bg-[url('https://img.freepik.com/free-photo/3d-dogs-cinema-watching-movie_23-2151024831.jpg?t=st=1737007551~exp=1737011151~hmac=26963cc1884b1eac4ab36c5d9943815cfc4b199f4ee0611f5f4687ea8fd4875c&w=360')] bg-cover"
+            style={{
+              backgroundImage: `url(${software})`,
+            }}
+            className="w-72 h-72 bg-orange-400 flex items-center justify-center bg-cover text-3xl font-bold"
           >
-            Animation
+            software
           </div>
         </div>
       </div>
