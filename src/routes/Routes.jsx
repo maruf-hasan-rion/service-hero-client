@@ -14,7 +14,6 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateService from "../pages/UpdateService";
 import ServiceDetails from "../pages/ServiceDetails";
 import Purchase from "../pages/Purchase";
-// import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -27,11 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/services",
-        element: (
-          <PrivateRoute>
-            <Services></Services>,
-          </PrivateRoute>
-        ),
+        element: <Services></Services>,
       },
       // {
       //   path: "/dashboard",
@@ -56,11 +51,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/bookedServices",
-        element: <BookedServices></BookedServices>,
+        element: (
+          <PrivateRoute>
+            <BookedServices></BookedServices>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/serviceToDo",
-        element: <ServiceToDo></ServiceToDo>,
+        element: (
+          <PrivateRoute>
+            <ServiceToDo></ServiceToDo>
+          </PrivateRoute>
+        ),
       },
       //   ],
       // },

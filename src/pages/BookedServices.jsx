@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../contexts/AuthContext";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const BookedServices = () => {
   const { user } = useContext(AuthContext);
   const [booked, setBooked] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     fetchAllServices();
@@ -14,9 +16,11 @@ const BookedServices = () => {
   }, [user]);
 
   const fetchAllServices = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/booking/${user?.email}`
-    );
+    // const { data } = await axios.get(
+    //   `${import.meta.env.VITE_API_URL}/booking/${user?.email}`
+    // );
+    const { data } = await axiosSecure.get(`/booking/${user?.email}`);
+    // const { data } = await axiosSecure.get(`/booking/tiger@gmail.com`);
     setBooked(data);
   };
   console.log(booked);

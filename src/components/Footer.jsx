@@ -6,7 +6,7 @@ const Footer = () => {
           <div className="text-2xl font-bold text-white mb-4 md:mb-0">
             <img
               className="w-[44px] md:w-[52px] p-2 mr-2 rounded-full bg-slate-200"
-              src="../../public/favicon.svg"
+              src="/favicon.svg"
               alt=""
             />
             Service Hero
