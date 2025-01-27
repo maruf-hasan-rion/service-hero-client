@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 const Services = () => {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState("");
-  console.log(search);
+  // console.log(search);
   useEffect(() => {
     fetchAllServices();
   }, []);

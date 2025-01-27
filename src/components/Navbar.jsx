@@ -5,7 +5,7 @@ import AuthContext from "../contexts/AuthContext";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   return (
     <div>
       <div className="navbar bg-base-100">

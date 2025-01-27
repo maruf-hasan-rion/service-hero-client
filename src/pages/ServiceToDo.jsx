@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../contexts/AuthContext";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -102,9 +101,7 @@ const ServiceToDo = () => {
                         defaultValue={services.serviceStatus || "Change Status"}
                         className="select select-bordered select-sm w-full max-w-xs bg-red-700 text-white font-bold"
                       >
-                        <option disabled selected>
-                          pending
-                        </option>
+                        <option disabled>pending</option>
                         <option>working</option>
                         <option>completed</option>
                       </select>
@@ -117,13 +114,10 @@ const ServiceToDo = () => {
         </div>
       )}
       {booked.length == 0 && (
-        <div className=" flex flex-col justify-center items-center gap-32">
+        <div className=" flex flex-col justify-center items-center gap-32 h-96">
           <h2 className="text-5xl font-semibold text-blue-600 ">
-            No booked service
+            No Service To Do
           </h2>
-          <Link to="/services">
-            <button className="btn btn-primary px-10">Book A service</button>
-          </Link>
         </div>
       )}
     </section>
