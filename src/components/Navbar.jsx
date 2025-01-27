@@ -61,7 +61,7 @@ const Navbar = () => {
           <Link to="/" className="p-2 font-semibold text-xl md:text-2xl">
             <img
               className="w-[40px] md:w-[52px] inline-block p-2 mr-2 rounded-full bg-slate-200"
-              src="../../public/favicon.svg"
+              src="/favicon.svg"
               alt=""
             />
             Service Hero
