@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ServiceDetails = () => {
   const { id } = useParams();
+  const axiosSecure = useAxiosSecure();
   const [services, setServices] = useState({});
   useEffect(() => {
     fetchServiceData();
@@ -11,9 +12,7 @@ const ServiceDetails = () => {
   }, [id]);
 
   const fetchServiceData = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/service/${id}`
-    );
+    const { data } = await axiosSecure.get(`/service/${id}`);
     setServices(data);
   };
   //   console.log(services);

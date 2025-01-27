@@ -6,10 +6,12 @@ import { useNavigate, useParams } from "react-router-dom";
 // import { compareAsc, format } from "date-fns";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Purchase = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   //   console.log(user);
   const { id } = useParams();
   const [startDate, setStartDate] = useState(new Date());
@@ -60,7 +62,7 @@ const Purchase = () => {
     };
     console.log("data", formData);
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/add-booking`, formData);
+      await axiosSecure.post(`/add-booking`, formData);
       form.reset();
       toast.success("Booked Successfully!!!");
       navigate("/bookedServices");

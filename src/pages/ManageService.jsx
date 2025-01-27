@@ -1,16 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import toast from "react-hot-toast";
-// import useAxiosSecure from '../hooks/useAxiosSecure'
-// import useAuth from '../hooks/useAuth'
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import AuthContext from "../contexts/AuthContext";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 const ManageService = () => {
-  //   const axiosSecure = useAxiosSecure()
-  // const { user } = useAuth()
+  const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const [services, setServices] = useState([]);
 
@@ -20,29 +18,10 @@ const ManageService = () => {
   }, [user]);
 
   const fetchAllServices = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/services/${user?.email}`
-    );
+    const { data } = await axiosSecure.get(`/services/${user?.email}`);
     setServices(data);
   };
   // console.log(services);
-
-  // const handleDelete = async (id) => {
-  //   try {
-
-  //     const { data } = await axios.delete(
-  //       `${import.meta.env.VITE_API_URL}/service/${id}`
-  //     );
-  //     console.log(data);
-  //     toast.success("Delete Successful");
-
-  //     //refresh ui
-  //     fetchAllServices();
-  //   } catch (err) {
-  //     console.log(err.message);
-  //     toast.error(err.message);
-  //   }
-  // };
   const handleDelete = (id) => {
     console.log(id);
 

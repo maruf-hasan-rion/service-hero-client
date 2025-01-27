@@ -3,10 +3,12 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import AuthContext from "../contexts/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const UpdateService = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [service, setService] = useState({});
   useEffect(() => {
@@ -15,9 +17,7 @@ const UpdateService = () => {
   }, [id]);
 
   const fetchServiceData = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/service/${id}`
-    );
+    const { data } = await axiosSecure.get(`/service/${id}`);
     setService(data);
   };
   const handleSubmit = async (e) => {

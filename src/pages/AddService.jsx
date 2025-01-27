@@ -1,13 +1,14 @@
 import { useContext } from "react";
 // import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import axios from "axios";
 import AuthContext from "../contexts/AuthContext";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AddService = () => {
   // const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -33,7 +34,7 @@ const AddService = () => {
     // console.log("data",formData);
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/add-service`, formData);
+      await axiosSecure.post(`/add-service`, formData);
       form.reset();
       toast.success("Service Added Successfully!!!");
       // navigate("/my-posted-jobs");
