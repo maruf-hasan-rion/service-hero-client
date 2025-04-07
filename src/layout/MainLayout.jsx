@@ -4,19 +4,22 @@ import Footer from "../components/Footer";
 import UseDynamicTitle from "../components/UseDynamicTitle";
 
 const MainLayout = () => {
-      UseDynamicTitle();
-    return (
-      <div>
-        {/* Navbar */}
+  UseDynamicTitle();
+  return (
+    <div>
+      {/* Navbar */}
+      <div className="">
         <Navbar></Navbar>
-        {/* Outlet */}
-        <div className="min-h-[calc(100vh-306px)]">
-          <Outlet></Outlet>
-        </div>
-        {/* Footer */}
-        <Footer></Footer>
       </div>
-    );
+      {/* Outlet */}
+      <div className="min-h-[calc(100vh-306px)] mb-24 relative top-24">
+        <Outlet></Outlet>
+      </div>
+      {/* <Outlet></Outlet> */}
+      {/* Footer */}
+      <Footer></Footer>
+    </div>
+  );
 };
 
 export default MainLayout;

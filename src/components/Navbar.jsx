@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 // import { FaCircleUser } from "react-icons/fa6";
 import AuthContext from "../contexts/AuthContext";
+import DarkMode from "./DarkMode";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  // console.log(user);
+  console.log(user);
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-blue-900 fixed z-10  text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -32,15 +33,19 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/" className="font-semibold">
+                  Home
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/services">Services</NavLink>
+                <NavLink to="/services" className="font-semibold">
+                  Services
+                </NavLink>
               </li>
               <li>
                 <details className="dropdown">
-                  <summary className="">Dashboard</summary>
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                  <summary className="font-semibold">Dashboard</summary>
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow text-black">
                     <li>
                       <Link to="/addService">Add Service</Link>
                     </li>
@@ -58,9 +63,9 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className="p-2 font-semibold text-xl md:text-2xl">
+          <Link to="/" className="p-2 font-bold text-xl md:text-3xl">
             <img
-              className="w-[40px] md:w-[52px] inline-block p-2 mr-2 rounded-full bg-slate-200"
+              className="w-[40px] md:w-[52px] inline-block p-2 mr-2 rounded-full"
               src="/favicon.svg"
               alt=""
             />
@@ -70,16 +75,20 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" className="font-semibold">
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/services">Services</NavLink>
+              <NavLink to="/services" className="font-semibold">
+                Services
+              </NavLink>
             </li>
             {user && user?.email ? (
               <li>
                 <details className="dropdown">
-                  <summary className="">Dashboard</summary>
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                  <summary className="font-semibold">Dashboard</summary>
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow text-black">
                     <li>
                       <Link to="/addService">Add Service</Link>
                     </li>
@@ -98,26 +107,10 @@ const Navbar = () => {
             ) : (
               <li></li>
             )}
-            {/* <li className="dropdown">
-              <NavLink to="/dashboard">Dashboard</NavLink>
-              <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                <li>
-                  <Link to="/dashboard/addService">Add Service</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/manageService">Manage Service</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/bookedServices">Booked Services</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/serviceToDo">Service To Do</Link>
-                </li>
-              </ul>
-            </li> */}
           </ul>
         </div>
         <div className="navbar-end">
+          <DarkMode></DarkMode>
           <div className="">
             {user && user?.email ? (
               <div className="flex px-2 items-center gap-1">
@@ -126,7 +119,7 @@ const Navbar = () => {
                   src={user?.photoURL}
                   alt=""
                 />
-                <p className="font-semibold bg-slate-200 p-2 rounded-3xl">
+                <p className="font-semibold p-2 rounded-3xl">
                   {user?.displayName}
                 </p>
               </div>

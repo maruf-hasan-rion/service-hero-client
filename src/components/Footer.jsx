@@ -1,11 +1,11 @@
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-gray-300 py-6">
+    <footer className="bg-blue-950 text-white py-6">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-4">
-          <div className="text-2xl font-bold text-white mb-4 md:mb-0">
+          <div className="text-3xl font-bold text-white mb-4 md:mb-0">
             <img
-              className="w-[44px] md:w-[52px] p-2 mr-2 rounded-full bg-slate-200"
+              className="w-[44px] md:w-[52px] mr-2 rounded-full"
               src="/favicon.svg"
               alt=""
             />

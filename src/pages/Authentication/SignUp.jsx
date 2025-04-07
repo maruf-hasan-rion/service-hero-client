@@ -165,7 +165,7 @@ const SignUp = () => {
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-900 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
               >
                 Sign Up
               </button>
@@ -176,8 +176,8 @@ const SignUp = () => {
             <span className="w-1/5 border-b  md:w-1/4"></span>
 
             <Link
-              to="/login"
-              className="text-xs text-gray-500 uppercase  hover:underline"
+              to="/signIn"
+              className="text-xs text-blue-500 uppercase  hover:underline"
             >
               or sign in
             </Link>

@@ -8,6 +8,7 @@ import "aos/dist/aos.css";
 import hosting from "../assets/hosting.jpg";
 import cloud from "../assets/cloud.jpg";
 import software from "../assets/register.jpg";
+import PricingPlan from "../components/PricingPlan";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -22,21 +23,21 @@ const Home = () => {
     setServices(data);
   };
 
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
-  const handleToggle = (e) => {
-    if (e.target.checked) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
-    document.querySelector("html").setAttribute("data-theme", localTheme);
-  }, [theme]);
+  // const [theme, setTheme] = useState(
+  //   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  // );
+  // const handleToggle = (e) => {
+  //   if (e.target.checked) {
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // };
+  // useEffect(() => {
+  //   localStorage.setItem("theme", theme);
+  //   const localTheme = localStorage.getItem("theme");
+  //   document.querySelector("html").setAttribute("data-theme", localTheme);
+  // }, [theme]);
 
   useEffect(() => {
     AOS.init({
@@ -47,7 +48,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <div className="p-4 mr-8 flex justify-end items-center mb-10">
+      {/* <div className="p-4 mr-8 flex justify-end items-center mb-10">
         <label className="flex cursor-pointer gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +84,7 @@ const Home = () => {
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </label>
-      </div>
+      </div> */}
       <Banner></Banner>
       <div className="">
         <h1 className="text-3xl font-bold text-center py-6 mt-20">
@@ -134,7 +135,49 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-blue-300 md:w-11/12 md:h-40 h-full md:px-32 mx-auto my-10 md:flex justify-between items-center">
+      <PricingPlan></PricingPlan>
+      <div className="p-10 w-9/12 mx-auto">
+        <h1 className="text-5xl font-semibold text-center p-10">
+          Frequently asked questions?
+        </h1>
+        <div className="collapse collapse-arrow bg-blue-100 m-2">
+          <input type="radio" name="my-accordion-2" defaultChecked />
+          <div className="collapse-title text-xl font-medium">
+            What types of gadgets do you service?
+          </div>
+          <div className="collapse-content">
+            <p>
+              We service a wide range of gadgets including smartphones, tablets,
+              laptops, desktops, smartwatches, and gaming consoles.
+            </p>
+          </div>
+        </div>
+        <div className="collapse collapse-arrow bg-blue-100 m-2">
+          <input type="radio" name="my-accordion-2" />
+          <div className="collapse-title text-xl font-medium">
+            What brands do you repair?
+          </div>
+          <div className="collapse-content">
+            <p>
+              We repair gadgets from major brands such as Apple, Samsung, Sony,
+              Microsoft, Dell, HP, and many others.
+            </p>
+          </div>
+        </div>
+        <div className="collapse collapse-arrow bg-blue-100 m-2">
+          <input type="radio" name="my-accordion-2" />
+          <div className="collapse-title text-xl font-medium">
+            Do you offer a warranty on your repairs?
+          </div>
+          <div className="collapse-content">
+            <p>
+              Yes, we offer a 90-day warranty on all our repairs. This covers
+              any issues related to the repair work done by us.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="bg-blue-300 md:h-40 h-full md:px-32 mx-auto my-10 md:flex justify-between items-center">
         <div className="md:w-6/12 p-6">
           <h2 className="text-3xl font-bold">Trial Start First 30 Days.</h2>
           <p className="font-medium">

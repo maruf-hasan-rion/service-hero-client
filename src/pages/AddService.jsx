@@ -45,7 +45,7 @@ const AddService = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
+    <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">
       <Helmet>
         <title>Add Service</title>
       </Helmet>

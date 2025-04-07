@@ -24,7 +24,7 @@ const Services = () => {
       .then((data) => setServices(data));
   }, [search]);
   return (
-    <div>
+    <div className="">
       <Helmet>
         <title>Services</title>
       </Helmet>
